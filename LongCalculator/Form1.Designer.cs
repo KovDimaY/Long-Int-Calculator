@@ -135,6 +135,7 @@
             this.multBtn.TabIndex = 9;
             this.multBtn.Text = "*";
             this.multBtn.UseVisualStyleBackColor = true;
+            this.multBtn.Click += new System.EventHandler(this.multBtn_Click);
             // 
             // button4
             // 
