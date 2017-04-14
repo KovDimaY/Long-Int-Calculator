@@ -114,6 +114,7 @@
             this.sumBtn.TabIndex = 7;
             this.sumBtn.Text = "+";
             this.sumBtn.UseVisualStyleBackColor = true;
+            this.sumBtn.Click += new System.EventHandler(this.sumBtn_Click);
             // 
             // diffBtn
             // 
@@ -157,8 +158,10 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.richTextBox1.Location = new System.Drawing.Point(90, 330);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(750, 65);
             this.richTextBox1.TabIndex = 12;
             this.richTextBox1.Text = "";
