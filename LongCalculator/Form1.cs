@@ -33,7 +33,8 @@ namespace LongCalculator
         {
             if (this.inputDataCorrect())
             {
-                this.richTextBox1.Text = this.multSchool(this.inputNumber1.Text, this.inputNumber2.Text);
+                //this.richTextBox1.Text = this.multSchool(this.inputNumber1.Text, this.inputNumber2.Text);
+                this.richTextBox1.Text = this.multKaratsuba(this.inputNumber1.Text, this.inputNumber2.Text);
             }
             else
             {
@@ -60,14 +61,14 @@ namespace LongCalculator
                 {
                     if (!System.Char.IsDigit(this.inputNumber2.Text[i])) return false;
                 }
-            }            
+            }
             return true;
         }
 
         private String normalizeInput(String input)
         {
             int index = 0;
-            while (input[index] == '0' && index < input.Length-1)
+            while (input[index] == '0' && index < input.Length - 1)
             {
                 index++;
             }
@@ -89,6 +90,11 @@ namespace LongCalculator
                 }
             }
             return result;
+        }
+
+        private String zeros(int number)
+        {
+            return new string('0', number);
         }
 
         private String sum(String number1, String number2)
@@ -113,14 +119,10 @@ namespace LongCalculator
                 result = ((num1[i] + num2[i] + temp) % 10).ToString() + result;
                 temp = (num1[i] + num2[i] + temp) / 10;
             }
-
-            if (result[0] == '0')
-            {
-                result = result.Substring(1);
-            }
-            return result;
+            
+            return this.normalizeInput(result);
         }
-                        
+
         private String multByDigit(String number, int digit)
         {
             int newLength = number.Length + 1;
@@ -134,12 +136,8 @@ namespace LongCalculator
                 result = ((num[i] * digit + temp) % 10).ToString() + result;
                 temp = (num[i] * digit + temp) / 10;
             }
-
-            if (result[0] == '0')
-            {
-                result = result.Substring(1);
-            }
-            return result;
+            
+            return this.normalizeInput(result);
         }
 
         private String multSchool(String number1, String number2)
@@ -155,12 +153,54 @@ namespace LongCalculator
                 result = this.sum(result, temp + shift);
                 shift += "0";
             }
+                        
+            return this.normalizeInput(result);
+        }
 
-            if (result[0] == '0')
+        private String multKaratsuba(String number1, String number2)
+        {
+            int minLength = 3;
+            String result = "";
+            if (number1.Length < minLength && number2.Length < minLength)
             {
-                result = result.Substring(1);
+                result = (Int32.Parse(number1) * Int32.Parse(number2)).ToString();
             }
-            return result;
+            else if (number2.Length < minLength)
+            {
+                String a = number1.Substring(0, number1.Length / 2);
+                String b = number1.Substring(number1.Length / 2);
+
+                String an = this.multKaratsuba(a, number2) + this.zeros(number1.Length - number1.Length / 2);
+                String bn = this.multKaratsuba(b, number2);
+                result = this.sum(an, bn);
+            }
+            else if (number1.Length < minLength)
+            {
+                String c = number2.Substring(0, number2.Length / 2);
+                String d = number2.Substring(number2.Length / 2);
+
+                String cn = this.multKaratsuba(c, number1) + this.zeros(number2.Length - number2.Length / 2);
+                String dn = this.multKaratsuba(d, number1);
+                result = this.sum(cn, dn);
+            } else
+            {
+                String a = number1.Substring(0, number1.Length / 2);
+                String b = number1.Substring(number1.Length / 2);
+                String c = number2.Substring(0, number2.Length / 2);
+                String d = number2.Substring(number2.Length / 2);
+
+                String ac = this.multKaratsuba(a, c) + this.zeros(number1.Length - number1.Length / 2 + 
+                                                                number2.Length - number2.Length / 2);
+                String ad = this.multKaratsuba(a, d) + this.zeros(number1.Length - number1.Length / 2);
+                String cb = this.multKaratsuba(c, b) + this.zeros(number2.Length - number2.Length / 2);
+                String bd = this.multKaratsuba(b, d);
+
+                String acd = this.sum(ac, ad);
+                String cbd = this.sum(cb, bd);
+             
+                result = this.sum(acd, cbd);
+            }
+            return this.normalizeInput(result);
         }
 
     }
