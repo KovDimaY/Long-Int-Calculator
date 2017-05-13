@@ -42,6 +42,18 @@ namespace LongCalculator
             }
         }
 
+        private void diffBtn_Click(object sender, EventArgs e)
+		{
+			if (this.inputDataCorrect())
+			{
+                this.richTextBox1.Text = this.difference(this.inputNumber1.Text, this.inputNumber2.Text);
+			}
+			else
+			{
+				this.richTextBox1.Text = "Your numbers are incorrect! Enter two positive integers and try again!";
+			}
+		}
+
         private bool inputDataCorrect()
         {
             if (this.inputNumber1.Text.Length < 1 || this.inputNumber2.Text.Length < 1)
@@ -121,6 +133,73 @@ namespace LongCalculator
             }
             
             return this.normalizeInput(result);
+        }
+
+		private String difference(String number1, String number2)
+		{
+            String number1normalized = this.normalizeInput(number1);
+            String number2normalized = this.normalizeInput(number2);
+
+            if (this.compare(number1normalized, number2normalized) == "first") {
+				int newLength;
+				if (number1.Length > number2.Length)
+				{
+					newLength = number1.Length + 1;
+				}
+				else
+				{
+					newLength = number2.Length + 1;
+				}
+
+				int[] num1 = this.convertToArray(number1, newLength);
+				int[] num2 = this.convertToArray(number2, newLength);
+				String result = "";
+				int temp = 0;
+
+				for (int i = 0; i < newLength; i++)
+				{
+                    if (num1[i] - num2[i] - temp < 0) {
+                        result = (10 + num1[i] - num2[i] - temp).ToString() + result;
+                        temp = 1;
+                    } else {
+                        result = (num1[i] - num2[i] - temp).ToString() + result;
+                        temp = 0;
+                    }
+				}
+				return this.normalizeInput(result);
+            } else if (this.compare(number1normalized, number2normalized) == "second") {
+                return "-" + this.difference(number2, number1);
+            } else {
+                return "0";
+            }
+		}
+
+		// This function returns:
+		// "first" if the first number is bigger
+		// "second" if the second number is bigger
+		// "equal" if the numbers are equal
+		private String compare(String number1, String number2){
+            if (number1.Length > number2.Length)
+            {
+                return "first";
+            }
+            else if (number1.Length < number2.Length)
+            {
+                return "second";
+            }
+            else
+            {
+                String result = "equal";
+                for (int i = 0; i < number1.Length; i++)
+                {
+                    if (number1[i] > number2[i]){
+                        return "first";
+                    } else if (number1[i] < number2[i]) {
+                        return "second";
+                    }
+                }
+                return result;
+            }
         }
 
         private String multByDigit(String number, int digit)

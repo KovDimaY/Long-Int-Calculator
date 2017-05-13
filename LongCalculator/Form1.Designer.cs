@@ -125,6 +125,7 @@
             this.diffBtn.TabIndex = 8;
             this.diffBtn.Text = "-";
             this.diffBtn.UseVisualStyleBackColor = true;
+            this.diffBtn.Click += new System.EventHandler(this.diffBtn_Click);
             // 
             // multBtn
             // 
