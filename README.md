@@ -9,7 +9,7 @@ This project was created to solve the Programming Assignment #1 of a course abou
 - Usual grade-school algorithm (table addition)
 
 ### Subtraction
-Not implemented yet
+- Usual grade-school algorithm (table subtraction)
 
 ### Multiplication
 - Usual grade-school algorithm (table multiplication),
