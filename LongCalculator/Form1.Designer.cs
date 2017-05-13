@@ -1,6 +1,6 @@
 ﻿namespace LongCalculator
 {
-    partial class divBtn
+    partial class LongIntCalc
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             this.sumBtn = new System.Windows.Forms.Button();
             this.diffBtn = new System.Windows.Forms.Button();
             this.multBtn = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.divBtn = new System.Windows.Forms.Button();
             this.resultLbl = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
@@ -137,16 +137,16 @@
             this.multBtn.Text = "*";
             this.multBtn.UseVisualStyleBackColor = true;
             this.multBtn.Click += new System.EventHandler(this.multBtn_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(690, 220);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 50);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "/";
-            this.button4.UseVisualStyleBackColor = true;
+			// 
+			// divBtn
+			// 
+			this.divBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.divBtn.Location = new System.Drawing.Point(690, 220);
+            this.divBtn.Name = "divBtn";
+            this.divBtn.Size = new System.Drawing.Size(150, 50);
+            this.divBtn.TabIndex = 10;
+            this.divBtn.Text = "/";
+            this.divBtn.UseVisualStyleBackColor = true;
             // 
             // resultLbl
             // 
@@ -167,15 +167,15 @@
             this.richTextBox1.Size = new System.Drawing.Size(750, 65);
             this.richTextBox1.TabIndex = 12;
             this.richTextBox1.Text = "";
-            // 
-            // divBtn
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			// 
+			// LongIntCalc
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 421);
+            this.ClientSize = new System.Drawing.Size(890, 420);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.resultLbl);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.divBtn);
             this.Controls.Add(this.multBtn);
             this.Controls.Add(this.diffBtn);
             this.Controls.Add(this.sumBtn);
@@ -187,7 +187,7 @@
             this.Controls.Add(this.inputNumber2);
             this.Controls.Add(this.inputNumber1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Name = "divBtn";
+            this.Name = "LongIntCalc";
             this.Text = "Long Integer Calculator";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -206,7 +206,7 @@
         private System.Windows.Forms.Button sumBtn;
         private System.Windows.Forms.Button diffBtn;
         private System.Windows.Forms.Button multBtn;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button divBtn;
         private System.Windows.Forms.Label resultLbl;
         private System.Windows.Forms.RichTextBox richTextBox1;
     }

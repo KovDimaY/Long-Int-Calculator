@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LongCalculator
 {
-    public partial class divBtn : Form
+    public partial class LongIntCalc : Form
     {
-        public divBtn()
+        public LongIntCalc()
         {
             InitializeComponent();
         }
